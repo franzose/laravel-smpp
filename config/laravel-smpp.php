@@ -8,10 +8,13 @@ return [
     |--------------------------------------------------------------------------
     |
     | 1. "sender" is the SMS message sender, either phone number or something like ABCDEF.
-    | 2. "source_ton"
-    | 3. "source_npi"
-    | 4. "destination_ton"
-    | 5. "destination_npi"
+    | 2. "source_ton" is the sender's type of number
+    | 3. "source_npi" is the sender's numbering plan identification
+    | 4. "destination_ton" is the receiver's type of number
+    | 5. "destination_npi" is the receiver's numbering plan identification
+    |
+    | Usually SMPP providers provide these settings to their clients.
+    | Please refer to official SMPP protocol specification v3.4 to learn more about TON and NPI settings.
     |
     */
 
@@ -27,6 +30,10 @@ return [
     |--------------------------------------------------------------------------
     | Custom SMPP provider settings
     |--------------------------------------------------------------------------
+    |
+    | Most of the time, settings shown under the "example" key are be provided by your SMPP provider.
+    | So if you don't have any of these settings, please contact your SMPP provider.
+    |
     */
 
     'default' => env('SMPP_DEFAULT_PROVIDER'),
