@@ -13,4 +13,24 @@ and copy default configuration by invoking `$ php artisan vendor:publish` comman
 
 ## Usage
 
-To be continued...
+You can use the service pretty straightforward and inject dependency in your controller:
+ 
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+class SmsController extends Controller
+{
+    public function send(SmppServiceInterface $smpp)
+    {
+        // One number
+        $this->smpp->sendOne(1234567890, 'Hi, this SMS was send via SMPP protocol');
+        
+        // Multiple numbers
+        $this->smpp->sendBulk([1234567890, 0987654321], 'Hi!');
+    }
+}
+```
+
+However it is better to abstract your SMS sending service from the SMPP implementation by defining a SMPP-compatible service interface.
