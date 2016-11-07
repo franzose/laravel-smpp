@@ -1,3 +1,5 @@
+[![](https://img.shields.io/packagist/dt/franzose/laravel-smpp.svg)](https://packagist.org/packages/franzose/laravel-smpp)
+
 # Laravel SMPP
 This package is a tiny wrapper for the [onlinecity/php-smpp](https://github.com/onlinecity/php-smpp) library.
 It provides a basic SMPP interface and implementation for the Laravel 5.2 framework.
