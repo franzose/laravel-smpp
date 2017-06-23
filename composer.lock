@@ -222,7 +222,7 @@
         },
         {
             "name": "php-smpp/php-smpp",
-            "version": "dev-master",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/onlinecity/php-smpp.git",
