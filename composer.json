@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php-smpp/php-smpp": "dev-master",
+    "php-smpp/php-smpp": "1.2",
     "illuminate/support": "^5.2"
   },
   "require-dev": {
