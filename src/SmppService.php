@@ -4,6 +4,7 @@ namespace LaravelSmpp;
 
 use Exception;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Support\Arr;
 use Log;
 use SMPP;
 use SmppAddress;
@@ -240,6 +241,6 @@ class SmppService implements SmppServiceInterface
         $key = $this->provider . '.' . $option;
         $default = $this->config->get(sprintf('laravel-smpp.defaults.%s', $option));
 
-        return array_get($this->providers, $key, $default);
+        return Arr::get($this->providers, $key, $default);
     }
 }
