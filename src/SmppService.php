@@ -224,7 +224,7 @@ class SmppService implements SmppServiceInterface
      */
     protected function sendSms(SmppAddress $sender, $recipient, $message)
     {
-        $message = iconv('UTF-8', 'UCS-2', $message);
+        $message = mb_convert_encoding($message, 'UCS-2', 'utf8');
 
         return $this->smpp->sendSMS($sender, $this->getRecipient($recipient), $message, null, SMPP::DATA_CODING_UCS2);
     }
