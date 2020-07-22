@@ -74,7 +74,7 @@ class SmppService implements SmppServiceInterface
 
     /**
      * Send a single SMS.
-     * 
+     *
      * @param $phone
      * @param $message
      *
@@ -106,13 +106,12 @@ class SmppService implements SmppServiceInterface
         $this->setupSmpp();
         $sender = $this->getSender();
 
-        foreach($phones as $idx => $phone) {
+        foreach ($phones as $idx => $phone) {
             try {
                 $message = (is_array($message) ? $message[$idx] : $message);
 
                 $this->sendSms($sender, $phone, $message);
-            }
-            catch(Exception $ex) {
+            } catch (Exception $ex) {
                 $this->alertSendingError($ex, $phone);
             }
         }
@@ -121,8 +120,25 @@ class SmppService implements SmppServiceInterface
     }
 
     /**
+     * Receive SMS.
+     *
+     * @return SmppSms|bool
+     * @throws InvalidArgumentException
+     */
+    public function receive()
+    {
+        $this->setupSmpp();
+
+        $sms = $this->smpp->readSMS();
+
+        $this->smpp->close();
+
+        return $sms;
+    }
+
+    /**
      * Alert error occured while sending SMSes.
-     * 
+     *
      * @param Exception $ex
      * @param int $phone
      */
