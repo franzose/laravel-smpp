@@ -30,4 +30,12 @@ interface SmppServiceInterface
      * @throws \SmppException
      */
     public function sendBulk(array $phones, $message);
+
+    /**
+     * Receive SMS.
+     *
+     * @return SmppSms|bool
+     * @throws InvalidArgumentException
+     */
+    public function receive();
 }
