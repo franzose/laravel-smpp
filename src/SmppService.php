@@ -74,7 +74,7 @@ class SmppService implements SmppServiceInterface
 
     /**
      * Send a single SMS.
-     * 
+     *
      * @param $phone
      * @param $message
      *
@@ -106,13 +106,12 @@ class SmppService implements SmppServiceInterface
         $this->setupSmpp();
         $sender = $this->getSender();
 
-        foreach($phones as $idx => $phone) {
+        foreach ($phones as $idx => $phone) {
             try {
                 $message = (is_array($message) ? $message[$idx] : $message);
 
                 $this->sendSms($sender, $phone, $message);
-            }
-            catch(Exception $ex) {
+            } catch (Exception $ex) {
                 $this->alertSendingError($ex, $phone);
             }
         }
@@ -122,7 +121,7 @@ class SmppService implements SmppServiceInterface
 
     /**
      * Alert error occured while sending SMSes.
-     * 
+     *
      * @param Exception $ex
      * @param int $phone
      */
@@ -145,11 +144,13 @@ class SmppService implements SmppServiceInterface
 
             try {
                 $transport->setRecvTimeout($config['timeout']);
-                $this->smpp = new SmppClient($transport);
+                $smpp = new SmppClient($transport);
+                $smpp->debug = $this->config->get('laravel-smpp.client.debug', false);
 
                 $transport->open();
-                $this->smpp->bindTransmitter($config['login'], $config['password']);
+                $smpp->bindTransmitter($config['login'], $config['password']);
 
+                $this->smpp = $smpp;
                 $this->provider = $provider;
 
                 break;

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default SMPP settings
@@ -75,6 +74,7 @@ return [
 
     'client' => [
         'system_type' => 'default',
-        'null_terminate_octetstrings' => false
+        'null_terminate_octetstrings' => false,
+        'debug' => false
     ]
 ];
