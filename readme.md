@@ -2,7 +2,7 @@
 
 # Laravel SMPP
 This package is a tiny wrapper for the [onlinecity/php-smpp](https://github.com/onlinecity/php-smpp) library.
-It provides a basic SMPP interface and implementation for the Laravel 5.2 framework.
+It provides a basic SMPP interface and implementation for the Laravel framework.
 
 ## Installation
 You can install Laravel SMPP using Composer command:
